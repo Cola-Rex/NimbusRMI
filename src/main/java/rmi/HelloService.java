@@ -1,16 +1,15 @@
 package rmi;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
 
-public class HelloService extends UnicastRemoteObject implements HelloServiceImpl{
+public interface HelloService extends Remote {
 
-	private static final long serialVersionUID = 1L;
-
-	protected HelloService() throws RemoteException {
-	}
-	
-	public String sayHello(String name) throws RemoteException {
-		return String.format("Hello %s", name);
-	}
+    /**
+     * Say hello to the user with a message.
+     * @param name the name of the user
+     * @return the greeting message
+     * @throws RemoteException if the remote method call fails
+     */
+    String sayHello(String name) throws RemoteException;
 }
